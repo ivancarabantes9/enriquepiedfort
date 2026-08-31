@@ -13,6 +13,7 @@ Deliberate choices: no death date anywhere — the dates read `1945 – ∞`. Th
 - `index.html` — all sections. Copy is Spanish (voseo); `[bracketed]` spans and `.ph` class mark facts still to be filled in.
 - `js/app.js` — a `DATA` object at the top (`photos`, `quotes`, `timeline`) is the only thing content editors touch; the rest renders it, wires the gallery lightbox (Bootstrap modal), scroll reveals, and the nav.
 - `img/*.svg` — placeholder stand-ins to be replaced with real photos (keep the filenames or update `DATA.photos`).
+- `assets/qr/` — QR code (vector + raster) pointing at the live URL, for a printed banner. `qr-marca.svg` is also shown in the on-page "Compartir" section. `LEER.md` there explains which file to send to print. Regenerate with `segno` if the URL changes.
 - The "Apoyar la propuesta" / "Descargar carta" buttons are **placeholders** — a separate verified-voting app will own real signatures. Do not wire a real form into this repo.
 
 ## Deploy

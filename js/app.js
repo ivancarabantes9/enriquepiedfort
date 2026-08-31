@@ -165,6 +165,53 @@ function initPlaceholders() {
   });
 }
 
+function initShare() {
+  const url = "https://enriquepiedfort.waterpoloargentina.com";
+  const title = "Enrique “Gato” Piedfort — Homenaje";
+  const text = "Homenaje a Enrique “Gato” Piedfort y la propuesta para que el nuevo natatorio de Rosario lleve su nombre.";
+  const u = encodeURIComponent(url);
+  const t = encodeURIComponent(text);
+
+  const links = {
+    shWhatsapp: "https://wa.me/?text=" + encodeURIComponent(text + " " + url),
+    shTelegram: "https://t.me/share/url?url=" + u + "&text=" + t,
+    shFacebook: "https://www.facebook.com/sharer/sharer.php?u=" + u,
+    shX: "https://twitter.com/intent/tweet?text=" + t + "&url=" + u,
+    shEmail: "mailto:?subject=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(text + "\n\n" + url)
+  };
+  for (const [id, href] of Object.entries(links)) {
+    const el = document.getElementById(id);
+    if (el) el.href = href;
+  }
+
+  const copyBtn = document.getElementById("copyLink");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      const done = () => {
+        copyBtn.textContent = "¡Copiado!";
+        setTimeout(() => { copyBtn.textContent = copyBtn.dataset.label; }, 2000);
+      };
+      try {
+        await navigator.clipboard.writeText(url);
+        done();
+      } catch {
+        const r = document.createRange();
+        const span = document.querySelector(".share-url");
+        if (span) { r.selectNode(span); getSelection().removeAllRanges(); getSelection().addRange(r); }
+        try { document.execCommand("copy"); done(); } catch { window.prompt("Copiá el enlace:", url); }
+      }
+    });
+  }
+
+  const nativeBtn = document.getElementById("shNative");
+  if (nativeBtn && navigator.share) {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener("click", () => {
+      navigator.share({ title, text, url }).catch(() => {});
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderQuotes();
   renderGallery();
@@ -172,5 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initLightbox();
   initReveal();
   initNav();
+  initShare();
   initPlaceholders();
 });

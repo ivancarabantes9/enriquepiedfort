@@ -247,6 +247,7 @@ img { max-width: 100%; height: auto; display: block; }
 .section-gallery { background: var(--deck); }
 .section-timeline { background: var(--paper); }
 .section-proposal { background: linear-gradient(180deg, var(--pool), var(--deep)); }
+.section-share { background: var(--deck); }
 
 /* --- historia ------------------------------------------------------- */
 
@@ -478,6 +479,59 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: .16em;
   font-size: .76rem;
   color: var(--shallow);
+}
+
+/* --- compartir ------------------------------------------- */
+
+.qr-card {
+  display: inline-block;
+  margin: 0;
+  padding: 1.1rem;
+  background: #fff;
+  border: 1px solid rgba(11, 110, 143, .25);
+  border-radius: 4px;
+  box-shadow: 0 24px 48px -28px rgba(4, 38, 58, .45);
+}
+.qr-card img { width: 240px; height: 240px; max-width: 100%; }
+
+.share-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .8rem;
+  margin: 0 0 1.7rem;
+}
+.share-url {
+  font-family: var(--ff-util);
+  font-weight: 600;
+  color: var(--deep);
+  background: #fff;
+  border: 1px solid rgba(11, 110, 143, .3);
+  border-radius: 999px;
+  padding: .5rem 1.05rem;
+  word-break: break-all;
+}
+
+.share-buttons { display: flex; flex-wrap: wrap; gap: .7rem; }
+.share-btn {
+  font-family: var(--ff-util);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .78rem;
+  color: var(--deep);
+  background: #fff;
+  border: 1px solid rgba(4, 38, 58, .2);
+  border-radius: 999px;
+  padding: .55rem 1.15rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.share-btn:hover, .share-btn:focus-visible {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: #fff;
 }
 
 /* --- footer ------------------------------------------------- */
