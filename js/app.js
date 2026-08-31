@@ -167,49 +167,43 @@ function initPlaceholders() {
 
 function initShare() {
   const url = "https://enriquepiedfort.waterpoloargentina.com";
-  const title = "Enrique “Gato” Piedfort — Homenaje";
   const text = "Homenaje a Enrique “Gato” Piedfort y la propuesta para que el nuevo natatorio de Rosario lleve su nombre.";
-  const u = encodeURIComponent(url);
-  const t = encodeURIComponent(text);
 
-  const links = {
-    shWhatsapp: "https://wa.me/?text=" + encodeURIComponent(text + " " + url),
-    shTelegram: "https://t.me/share/url?url=" + u + "&text=" + t,
-    shFacebook: "https://www.facebook.com/sharer/sharer.php?u=" + u,
-    shX: "https://twitter.com/intent/tweet?text=" + t + "&url=" + u,
-    shEmail: "mailto:?subject=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(text + "\n\n" + url)
-  };
-  for (const [id, href] of Object.entries(links)) {
-    const el = document.getElementById(id);
-    if (el) el.href = href;
-  }
+  const wa = document.getElementById("shWhatsapp");
+  if (wa) wa.href = "https://wa.me/?text=" + encodeURIComponent(text + " " + url);
 
   const copyBtn = document.getElementById("copyLink");
-  if (copyBtn) {
-    copyBtn.addEventListener("click", async () => {
-      const done = () => {
-        copyBtn.textContent = "¡Copiado!";
-        setTimeout(() => { copyBtn.textContent = copyBtn.dataset.label; }, 2000);
-      };
-      try {
-        await navigator.clipboard.writeText(url);
-        done();
-      } catch {
-        const r = document.createRange();
-        const span = document.querySelector(".share-url");
-        if (span) { r.selectNode(span); getSelection().removeAllRanges(); getSelection().addRange(r); }
-        try { document.execCommand("copy"); done(); } catch { window.prompt("Copiá el enlace:", url); }
-      }
-    });
-  }
+  if (!copyBtn) return;
 
-  const nativeBtn = document.getElementById("shNative");
-  if (nativeBtn && navigator.share) {
-    nativeBtn.hidden = false;
-    nativeBtn.addEventListener("click", () => {
-      navigator.share({ title, text, url }).catch(() => {});
-    });
-  }
+  const flashCopied = () => {
+    copyBtn.classList.add("copied");
+    clearTimeout(copyBtn._t);
+    copyBtn._t = setTimeout(() => copyBtn.classList.remove("copied"), 2200);
+  };
+
+  copyBtn.addEventListener("click", async () => {
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(url);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = url;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "absolute";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) flashCopied();
+    else window.prompt("Copiá el enlace:", url);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
