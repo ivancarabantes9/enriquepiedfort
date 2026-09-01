@@ -10,9 +10,10 @@ Deliberate choices: no death date anywhere — the dates read `1945 – ∞`. Th
 
 ## Structure
 
-- `index.html` — all sections. Copy is Spanish (voseo); `[bracketed]` spans and `.ph` class mark facts still to be filled in.
-- `js/app.js` — a `DATA` object at the top (`photos`, `quotes`, `timeline`) is the only thing content editors touch; the rest renders it, wires the gallery lightbox (Bootstrap modal), scroll reveals, and the nav.
-- `img/*.svg` — placeholder stand-ins to be replaced with real photos (keep the filenames or update `DATA.photos`).
+- `index.html` — most of the copy lives here directly. Spanish (voseo); `[bracketed]` spans and `.ph` class mark facts still to be filled in.
+- `data.json` — the **only** externalised content: the `testimonios`, `galeria` and `trayectoria` lists. `js/app.js` fetches it on load and renders those three sections. A failed fetch (e.g. opening via `file://`) leaves them empty — preview through a local server.
+- `js/app.js` — fetch + render of the three lists, plus the gallery lightbox (Bootstrap modal), scroll reveals, nav behaviour and share buttons.
+- `img/*.svg` — placeholder stand-ins to be replaced with real photos (`g*` = gallery, `t*` = trayectoria; keep the filenames or update `data.json`).
 - `img/og.jpg` — the social-card image (1200×630), composed from `img/gato_profile.png`. Referenced by the `og:image` / `twitter:image` tags with explicit width/height. Regenerate it if that source photo or the name/dates change.
 - `assets/qr/` — QR code (vector + raster) pointing at the live URL, for a printed banner. `qr-marca.svg` is also shown in the on-page "Compartir" section. `LEER.md` there explains which file to send to print. Regenerate with `segno` if the URL changes.
 - The "Apoyar la propuesta" / "Descargar carta" buttons are **placeholders** — a separate verified-voting app will own real signatures. Do not wire a real form into this repo.

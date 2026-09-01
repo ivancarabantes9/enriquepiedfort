@@ -9,14 +9,17 @@ serves the repo root from `main` and publishes to
 
 ## Editing content
 
-Everything an editor needs is in one place: the `DATA` object at the top of
-[`js/app.js`](js/app.js) — the photo gallery, the testimonial quotes, and the
-career timeline. Replace the placeholder images in [`img/`](img/) (keep the
-filenames, or update `DATA.photos`).
+The **testimonios**, the **galería** and the **trayectoria** (with one image per
+milestone) are lists in [`data.json`](data.json) — edit them there. Replace the
+placeholder images in [`img/`](img/) (`g*` gallery, `t*` trayectoria; keep the
+filenames or update `data.json`).
 
-Prose copy (the hero, the biography, the proposal) lives in
+The rest of the copy — hero, biography, proposal, footer — lives directly in
 [`index.html`](index.html). Text in `[brackets]` and spans with class `ph` mark
-facts still to be filled in — years, clubs, titles, the city, the organizing group.
+facts still to be filled in — years, clubs, titles, the organizing group.
+
+Preview through a local server (`python3 -m http.server`); opening the file
+directly blocks the `data.json` fetch and leaves those three sections empty.
 
 The "Apoyar la propuesta" buttons are placeholders. A separate app will handle
 verified signatures.

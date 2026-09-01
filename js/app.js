@@ -1,41 +1,29 @@
 /* ===========================================================================
    Enrique "Gato" Piedfort — homenaje
-   Editá SOLO el objeto DATA de abajo para cambiar fotos, testimonios y años.
-   El resto arma la página, la galería con lightbox y las animaciones.
+
+   Los TESTIMONIOS, la GALERÍA y la TRAYECTORIA se editan en  ../data.json
+   El resto del texto del sitio está directo en index.html.
+
+   Nota: abierto con doble clic (file://) el navegador no deja leer data.json
+   y esas tres secciones quedan vacías. Para la vista real:
+   `python3 -m http.server` y entrá por http://localhost:8000
    =========================================================================== */
 
-const DATA = {
-  /* Galería. Poné las imágenes en img/ y listalas acá, de la más a la menos
-     importante. year y caption son opcionales. */
-  photos: [
-    { src: "img/g1.svg", year: "[año]", caption: "[Qué pasa en esta foto. Reemplazar por una imagen real.]" },
-    { src: "img/g2.svg", year: "[año]", caption: "[Descripción de la foto.]" },
-    { src: "img/g3.svg", year: "[año]", caption: "[Descripción de la foto.]" },
-    { src: "img/g4.svg", year: "[año]", caption: "[Descripción de la foto.]" },
-    { src: "img/g5.svg", year: "[año]", caption: "[Descripción de la foto.]" },
-    { src: "img/g6.svg", year: "[año]", caption: "[Descripción de la foto.]" }
-  ],
-
-  /* Testimonios. quote = la frase; who = quién lo dice; role = su relación con él. */
-  quotes: [
-    { quote: "[Testimonio de un jugador o jugadora que formó.]", who: "[Nombre]", role: "Jugó bajo su dirección en Gimnasia y Esgrima" },
-    { quote: "[Testimonio de un colega entrenador.]", who: "[Nombre]", role: "Entrenador" },
-    { quote: "[Testimonio de un dirigente del club o del Seleccionado.]", who: "[Nombre]", role: "Dirigente" },
-    { quote: "[Unas palabras de la familia.]", who: "[Nombre]", role: "Familia" }
-  ],
-
-  /* Trayectoria. En orden cronológico. */
-  timeline: [
-    { year: "[196X]", label: "Primeros pasos en el agua, en el Club Gimnasia y Esgrima de Rosario." },
-    { year: "[197X]", label: "Debuta con el Seleccionado Nacional." },
-    { year: "[198X]", label: "Se retira como jugador y empieza a dirigir en Gimnasia y Esgrima." },
-    { year: "[200X]", label: "Asume como [cargo] del club." },
-    { year: "[201X]", label: "[Reconocimiento o hito destacado.]" },
-    { year: "∞", label: "Su legado sigue en cada categoría formativa del club y en el waterpolo de Rosario." }
-  ]
-};
-
-/* --------------------------------------------------------------------------- */
+async function loadData() {
+  try {
+    const res = await fetch("data.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return await res.json();
+  } catch (err) {
+    console.warn(
+      "No se pudo leer data.json (testimonios, galería y trayectoria quedan vacíos).",
+      location.protocol === "file:"
+        ? "Abrí el sitio con un servidor local: python3 -m http.server"
+        : err
+    );
+    return {};
+  }
+}
 
 const h = (tag, attrs = {}, ...kids) => {
   const el = document.createElement(tag);
@@ -48,10 +36,11 @@ const h = (tag, attrs = {}, ...kids) => {
   return el;
 };
 
-function renderQuotes() {
+function renderQuotes(items) {
   const grid = document.getElementById("quoteGrid");
-  if (!grid) return;
-  DATA.quotes.forEach((q) => {
+  if (!grid || !Array.isArray(items)) return;
+  grid.textContent = "";
+  items.forEach((q) => {
     const cite = h("cite", { text: q.who });
     if (q.role) cite.append(h("span", { text: q.role }));
     grid.append(
@@ -65,10 +54,11 @@ function renderQuotes() {
   });
 }
 
-function renderGallery() {
+function renderGallery(items) {
   const wrap = document.getElementById("gallery");
-  if (!wrap) return;
-  DATA.photos.forEach((p, i) => {
+  if (!wrap || !Array.isArray(items)) return;
+  wrap.textContent = "";
+  items.forEach((p, i) => {
     const btn = h("button", {
       class: "shot",
       type: "button",
@@ -80,16 +70,20 @@ function renderGallery() {
   });
 }
 
-function renderTimeline() {
+function renderTimeline(items) {
   const ol = document.getElementById("timeline");
-  if (!ol) return;
-  DATA.timeline.forEach((t) => {
-    ol.append(
-      h("li", {},
-        h("span", { class: "t-year", text: t.year }),
-        h("span", { class: "t-label", text: t.label })
-      )
-    );
+  if (!ol || !Array.isArray(items)) return;
+  ol.textContent = "";
+  items.forEach((t) => {
+    const card = h("div", { class: "t-card reveal" }, h("span", { class: "t-year", text: t.year }));
+    if (t.img) {
+      card.append(
+        h("div", { class: "t-media" },
+          h("img", { src: t.img, alt: t.alt || "", loading: "lazy" }))
+      );
+    }
+    card.append(h("p", { class: "t-label", text: t.label }));
+    ol.append(h("li", { class: t.img ? "t-item" : "t-item t-item-coda" }, card));
   });
 }
 
@@ -186,7 +180,7 @@ function initShare() {
     try {
       await navigator.clipboard.writeText(url);
       ok = true;
-    } catch {
+    } catch (e1) {
       try {
         const ta = document.createElement("textarea");
         ta.value = url;
@@ -197,7 +191,7 @@ function initShare() {
         ta.select();
         ok = document.execCommand("copy");
         document.body.removeChild(ta);
-      } catch {
+      } catch (e2) {
         ok = false;
       }
     }
@@ -206,10 +200,11 @@ function initShare() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderQuotes();
-  renderGallery();
-  renderTimeline();
+document.addEventListener("DOMContentLoaded", async () => {
+  const data = await loadData();
+  renderQuotes(data.testimonios);
+  renderGallery(data.galeria);
+  renderTimeline(data.trayectoria);
   initLightbox();
   initReveal();
   initNav();

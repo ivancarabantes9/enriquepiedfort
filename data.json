@@ -1,0 +1,28 @@
+{
+  "_ayuda": "Solo estas tres listas se editan acá (testimonios, galería y trayectoria). El resto del texto del sitio está en index.html. No borres las comas ni cambies los nombres de las claves.",
+
+  "testimonios": [
+    { "quote": "[Testimonio de un jugador o jugadora que formó.]", "who": "[Nombre]", "role": "Jugó bajo su dirección en Gimnasia y Esgrima" },
+    { "quote": "[Testimonio de un colega entrenador.]", "who": "[Nombre]", "role": "Entrenador" },
+    { "quote": "[Testimonio de un dirigente del club o del Seleccionado.]", "who": "[Nombre]", "role": "Dirigente" },
+    { "quote": "[Unas palabras de la familia.]", "who": "[Nombre]", "role": "Familia" }
+  ],
+
+  "galeria": [
+    { "src": "img/g1.svg", "year": "[año]", "caption": "[Qué pasa en esta foto. Reemplazar por una imagen real.]" },
+    { "src": "img/g2.svg", "year": "[año]", "caption": "[Descripción de la foto.]" },
+    { "src": "img/g3.svg", "year": "[año]", "caption": "[Descripción de la foto.]" },
+    { "src": "img/g4.svg", "year": "[año]", "caption": "[Descripción de la foto.]" },
+    { "src": "img/g5.svg", "year": "[año]", "caption": "[Descripción de la foto.]" },
+    { "src": "img/g6.svg", "year": "[año]", "caption": "[Descripción de la foto.]" }
+  ],
+
+  "trayectoria": [
+    { "year": "[196X]", "img": "img/t1.svg", "alt": "Enrique Piedfort de joven en la pileta", "label": "Primeros pasos en el agua, en el Club Gimnasia y Esgrima de Rosario." },
+    { "year": "[197X]", "img": "img/t2.svg", "alt": "Con la gorra del Seleccionado Nacional", "label": "Debuta con el Seleccionado Nacional." },
+    { "year": "[198X]", "img": "img/t3.svg", "alt": "Al borde de la pileta como entrenador", "label": "Se retira como jugador y empieza a dirigir en Gimnasia y Esgrima." },
+    { "year": "[200X]", "img": "img/t4.svg", "alt": "En una reunión del club", "label": "Asume como [cargo] del club." },
+    { "year": "[201X]", "img": "img/t5.svg", "alt": "Recibiendo un reconocimiento", "label": "[Reconocimiento o hito destacado.]" },
+    { "year": "∞", "label": "Su legado sigue en cada categoría formativa del club y en el waterpolo de Rosario." }
+  ]
+}
