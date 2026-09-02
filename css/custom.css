@@ -15,13 +15,23 @@
   --ink:    #0D1B24;
   --ink-soft:#3A4B55;
 
+  /* mismos colores en triplete RGB, para rgba(var(--x-rgb), α) */
+  --deep-rgb:    4, 38, 58;
+  --pool-rgb:    11, 110, 143;
+  --shallow-rgb: 63, 193, 201;
+  --gold-rgb:    232, 176, 75;
+  --light-rgb:   255, 255, 255;
+
   --ff-display: "Anton", "Barlow Condensed", Impact, sans-serif;
   --ff-head:    "Barlow Condensed", "Arial Narrow", sans-serif;
   --ff-body:    "Source Serif 4", Georgia, "Times New Roman", serif;
   --ff-util:    "Barlow", system-ui, sans-serif;
 
-  --edge: clamp(1rem, 4vw, 3rem);
   --nav-h: 64px;
+
+  /* tarjeta "hundida": borde y sombra compartidos por retrato y QR */
+  --card-border: 1px solid rgba(var(--pool-rgb), .25);
+  --card-shadow: 0 24px 48px -24px rgba(var(--deep-rgb), .5);
 }
 
 * { box-sizing: border-box; }
@@ -40,6 +50,8 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
+
+[hidden] { display: none !important; }
 
 ::selection { background: var(--gold); color: var(--deep); }
 
@@ -84,9 +96,9 @@ img { max-width: 100%; height: auto; display: block; }
   transition: background-color .3s ease, box-shadow .3s ease, backdrop-filter .3s ease;
 }
 .site-nav.scrolled {
-  background: rgba(4, 38, 58, .92);
+  background: rgba(var(--deep-rgb),.92);
   backdrop-filter: blur(8px);
-  box-shadow: 0 1px 0 rgba(63, 193, 201, .25);
+  box-shadow: 0 1px 0 rgba(var(--shallow-rgb),.25);
 }
 .navbar-brand {
   font-family: var(--ff-head);
@@ -104,22 +116,22 @@ img { max-width: 100%; height: auto; display: block; }
   text-transform: uppercase;
   letter-spacing: .12em;
   font-size: .8rem;
-  color: rgba(255, 255, 255, .8);
+  color: rgba(var(--light-rgb),.8);
 }
 .site-nav .nav-link:hover, .site-nav .nav-link:focus { color: #fff; }
 .navbar-toggler {
-  border-color: rgba(255, 255, 255, .4);
+  border-color: rgba(var(--light-rgb),.4);
 }
-.navbar-toggler:focus { box-shadow: 0 0 0 .2rem rgba(232, 176, 75, .5); }
+.navbar-toggler:focus { box-shadow: 0 0 0 .2rem rgba(var(--gold-rgb),.5); }
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.85)' stroke-width='2.5' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 @media (max-width: 991.98px) {
   .site-nav .navbar-collapse {
-    background: rgba(4, 38, 58, .97);
+    background: rgba(var(--deep-rgb),.97);
     margin: .55rem calc(-1 * var(--bs-gutter-x, .75rem)) -.55rem;
     padding: .5rem 1.25rem 1rem;
-    border-top: 1px solid rgba(63, 193, 201, .2);
+    border-top: 1px solid rgba(var(--shallow-rgb),.2);
   }
 }
 
@@ -176,8 +188,6 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero-inner { position: relative; z-index: 1; }
 
-.hero-kicker { color: var(--shallow); }
-
 .hero-name {
   font-family: var(--ff-display);
   font-weight: 400;
@@ -192,8 +202,31 @@ img { max-width: 100%; height: auto; display: block; }
   background-clip: text;
   color: transparent;
 }
+/* en dos columnas (≥992px) la foto comparte el ancho: bajamos el tope */
+@media (min-width: 992px) {
+  .hero-name { font-size: clamp(3.2rem, 8vw, 6.5rem); }
+}
 .hero-name > span { display: block; }
 .hero-name .nick { color: transparent; font-size: .62em; letter-spacing: .02em; white-space: nowrap; }
+
+.hero-media { text-align: center; }
+.hero-portrait { margin: 0; }
+.hero-media picture { display: block; }
+.hero-media img {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+  border-radius: 2px;
+  border: 1px solid var(--gold);
+  /* anillo dorado tenue (box-shadow, no outline: no lo recorta el overflow del hero) */
+  box-shadow:
+    0 0 0 7px rgba(var(--gold-rgb),.12),
+    0 40px 70px -28px rgba(2, 20, 33, .85);
+}
+@media (max-width: 991.98px) {
+  .hero-media { margin-top: 2.5rem; }
+  .hero-media img { max-width: 320px; }
+}
 
 .hero-dates {
   font-family: var(--ff-util);
@@ -208,7 +241,7 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: 34ch;
   font-size: clamp(1.05rem, 2.4vw, 1.45rem);
   line-height: 1.55;
-  color: rgba(255, 255, 255, .9);
+  color: rgba(var(--light-rgb),.9);
   margin: 0 0 2.6rem;
 }
 .hero-thesis .hl { color: var(--gold); white-space: nowrap; }
@@ -242,9 +275,9 @@ img { max-width: 100%; height: auto; display: block; }
 /* --- sections base --------------------------------------------------- */
 
 .section { padding-block: clamp(3.5rem, 9vw, 7rem); }
-.section-story { background: var(--paper); }
-.section-quotes { background: var(--deep); color: rgba(255,255,255,.9); }
+.section-story,
 .section-gallery { background: var(--paper); }
+.section-quotes { background: var(--deep); color: rgba(var(--light-rgb),.9); }
 .section-timeline { background: var(--deck); }
 .section-proposal { background: linear-gradient(180deg, var(--pool), var(--deep)); }
 .section-share { background: var(--deck); }
@@ -263,15 +296,19 @@ img { max-width: 100%; height: auto; display: block; }
 .portrait img {
   width: 100%;
   border-radius: 2px;
-  border: 1px solid rgba(11, 110, 143, .25);
-  box-shadow: 0 24px 48px -24px rgba(4, 38, 58, .5);
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
 }
-.portrait figcaption {
+.portrait figcaption,
+.hero-portrait figcaption {
   font-family: var(--ff-util);
   font-size: .82rem;
   letter-spacing: .04em;
   color: var(--ink-soft);
   margin-top: .7rem;
+}
+.hero-portrait figcaption {
+  color: rgba(var(--light-rgb),.72);
 }
 
 .pull {
@@ -297,8 +334,8 @@ img { max-width: 100%; height: auto; display: block; }
 .quote-card {
   height: 100%;
   margin: 0;
-  background: rgba(255, 255, 255, .04);
-  border: 1px solid rgba(63, 193, 201, .22);
+  background: rgba(var(--light-rgb),.04);
+  border: 1px solid rgba(var(--shallow-rgb),.22);
   border-top: 3px solid var(--gold);
   border-radius: 2px;
   padding: 1.8rem 1.6rem 1.5rem;
@@ -320,7 +357,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: .76rem;
   color: var(--shallow);
 }
-.quote-card cite span { display: block; color: rgba(255,255,255,.55); letter-spacing: .06em; margin-top: .2rem; }
+.quote-card cite span { display: block; color: rgba(var(--light-rgb),.55); letter-spacing: .06em; margin-top: .2rem; }
 
 /* --- galeria ----------------------------------------------------- */
 
@@ -350,7 +387,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--ff-util); font-weight: 600;
   font-size: .74rem; letter-spacing: .1em;
   color: #fff;
-  background: rgba(4, 38, 58, .72);
+  background: rgba(var(--deep-rgb),.72);
   padding: .2rem .5rem;
   border-radius: 2px;
   opacity: 0;
@@ -411,10 +448,10 @@ img { max-width: 100%; height: auto; display: block; }
 
 .t-card {
   background: #fff;
-  border: 1px solid rgba(11, 110, 143, .22);
+  border: 1px solid rgba(var(--pool-rgb),.22);
   border-radius: 4px;
   padding: 1.3rem 1.4rem;
-  box-shadow: 0 18px 40px -26px rgba(4, 38, 58, .45);
+  box-shadow: 0 18px 40px -26px rgba(var(--deep-rgb),.45);
 }
 .t-year {
   display: block;
@@ -491,7 +528,7 @@ img { max-width: 100%; height: auto; display: block; }
   margin: 0 0 1.2rem;
 }
 .proposal-body {
-  color: rgba(255, 255, 255, .88);
+  color: rgba(var(--light-rgb),.88);
   max-width: 52ch;
   margin: 0 auto 2rem;
 }
@@ -513,8 +550,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .proposal-actions .btn-outline-light {
   --bs-btn-color: #fff;
-  --bs-btn-border-color: rgba(255,255,255,.6);
-  --bs-btn-hover-bg: rgba(255,255,255,.12);
+  --bs-btn-border-color: rgba(var(--light-rgb),.6);
+  --bs-btn-hover-bg: rgba(var(--light-rgb),.12);
   --bs-btn-hover-border-color: #fff;
   font-family: var(--ff-util); font-weight: 600;
   text-transform: uppercase; letter-spacing: .09em;
@@ -522,14 +559,14 @@ img { max-width: 100%; height: auto; display: block; }
 .proposal-note {
   font-family: var(--ff-util);
   font-size: .9rem;
-  color: rgba(255, 255, 255, .7);
+  color: rgba(var(--light-rgb),.7);
   max-width: 44ch;
   margin: 1.4rem auto 0;
 }
 .proposal-goal {
   margin-top: 2.6rem;
   padding-top: 1.8rem;
-  border-top: 1px solid rgba(255, 255, 255, .18);
+  border-top: 1px solid rgba(var(--light-rgb),.18);
 }
 .goal-num {
   display: block;
@@ -553,9 +590,9 @@ img { max-width: 100%; height: auto; display: block; }
   margin: 0;
   padding: 1.1rem;
   background: #fff;
-  border: 1px solid rgba(11, 110, 143, .25);
+  border: var(--card-border);
   border-radius: 4px;
-  box-shadow: 0 24px 48px -28px rgba(4, 38, 58, .45);
+  box-shadow: var(--card-shadow);
 }
 .qr-card img { width: 240px; height: 240px; max-width: 100%; }
 
@@ -571,7 +608,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: 50%;
   color: var(--deep);
   background: #fff;
-  border: 1px solid rgba(4, 38, 58, .2);
+  border: 1px solid rgba(var(--deep-rgb),.2);
   cursor: pointer;
   transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
 }
@@ -627,7 +664,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .site-footer {
   background: var(--deep);
-  color: rgba(255, 255, 255, .7);
+  color: rgba(var(--light-rgb),.7);
   padding-block: 3rem;
 }
 .foot-name {
@@ -641,13 +678,13 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .foot-meta { font-family: var(--ff-util); font-size: .9rem; margin: .2rem 0; }
 .foot-meta a { color: var(--shallow); }
-.foot-dim { color: rgba(255, 255, 255, .4); }
+.foot-dim { color: rgba(var(--light-rgb),.4); }
 
 /* --- lightbox --------------------------------------------- */
 
 .lightbox .modal-content {
   background: var(--deep);
-  border: 1px solid rgba(63, 193, 201, .3);
+  border: 1px solid rgba(var(--shallow-rgb),.3);
   border-radius: 2px;
   padding: 0;
   position: relative;
@@ -656,7 +693,7 @@ img { max-width: 100%; height: auto; display: block; }
 .lightbox-caption {
   font-family: var(--ff-util);
   font-size: .9rem;
-  color: rgba(255, 255, 255, .8);
+  color: rgba(var(--light-rgb),.8);
   padding: .9rem 1.2rem;
   margin: 0;
 }
@@ -664,7 +701,7 @@ img { max-width: 100%; height: auto; display: block; }
   position: absolute;
   top: .7rem; right: .7rem;
   z-index: 3;
-  background-color: rgba(4, 38, 58, .6);
+  background-color: rgba(var(--deep-rgb),.6);
   border-radius: 50%;
   padding: .6rem;
 }

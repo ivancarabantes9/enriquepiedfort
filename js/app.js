@@ -83,7 +83,20 @@ function renderTimeline(items) {
       );
     }
     card.append(h("p", { class: "t-label", text: t.label }));
-    ol.append(h("li", { class: t.img ? "t-item" : "t-item t-item-coda" }, card));
+    // t.coda === true → el cierre con el ∞ (tarjeta sin marco, año gigante).
+    // El resto son hitos normales, con o sin foto.
+    ol.append(h("li", { class: t.coda ? "t-item t-item-coda" : "t-item" }, card));
+  });
+}
+
+// Interruptores del sitio (data.json → flags). Por defecto todo queda oculto
+// —los elementos llevan el atributo `hidden` en index.html— y se muestra sólo
+// si el flag correspondiente viene en true.
+function applyFlags(flags = {}) {
+  const propuestaOn = flags.propuesta === true;
+  ["propuesta", "navPropuesta"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.hidden = !propuestaOn;
   });
 }
 
@@ -202,6 +215,7 @@ function initShare() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await loadData();
+  applyFlags(data.flags);
   renderQuotes(data.testimonios);
   renderGallery(data.galeria);
   renderTimeline(data.trayectoria);

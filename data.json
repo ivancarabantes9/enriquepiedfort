@@ -1,5 +1,10 @@
 {
-  "_ayuda": "Solo estas tres listas se editan acá (testimonios, galería y trayectoria). El resto del texto del sitio está en index.html. No borres las comas ni cambies los nombres de las claves.",
+  "_ayuda": "Solo estas tres listas se editan acá (testimonios, galería y trayectoria). El resto del texto del sitio está en index.html. No borres las comas ni cambies los nombres de las claves. En 'trayectoria', 'img'/'alt' son opcionales y el último ítem lleva 'coda': true (el cierre con el ∞).",
+
+  "_flags_ayuda": "Interruptores del sitio. Poné true para mostrar. 'propuesta' habilita la sección 'La propuesta' y su botón en el menú; dejala en false hasta tener la aprobación.",
+  "flags": {
+    "propuesta": false
+  },
 
   "testimonios": [
     { "quote": "[Testimonio de un jugador o jugadora que formó.]", "who": "[Nombre]", "role": "Jugó bajo su dirección en Gimnasia y Esgrima" },
@@ -18,11 +23,25 @@
   ],
 
   "trayectoria": [
-    { "year": "[196X]", "img": "img/t1.svg", "alt": "Enrique Piedfort de joven en la pileta", "label": "Primeros pasos en el agua, en el Club Gimnasia y Esgrima de Rosario." },
-    { "year": "[197X]", "img": "img/t2.svg", "alt": "Con la gorra del Seleccionado Nacional", "label": "Debuta con el Seleccionado Nacional." },
-    { "year": "[198X]", "img": "img/t3.svg", "alt": "Al borde de la pileta como entrenador", "label": "Se retira como jugador y empieza a dirigir en Gimnasia y Esgrima." },
-    { "year": "[200X]", "img": "img/t4.svg", "alt": "En una reunión del club", "label": "Asume como [cargo] del club." },
-    { "year": "[201X]", "img": "img/t5.svg", "alt": "Recibiendo un reconocimiento", "label": "[Reconocimiento o hito destacado.]" },
-    { "year": "∞", "label": "Su legado sigue en cada categoría formativa del club y en el waterpolo de Rosario." }
+    { "year": "1960", "img": "img/t1.svg", "alt": "Enrique Piedfort de joven, nadador en Gimnasia y Esgrima", "label": "Debuta como nadador en el Club Gimnasia y Esgrima de Rosario, la institución a la que quedará ligado toda su vida." },
+    { "year": "1964", "label": "Quíntuple campeón de la República y campeón absoluto de primera categoría en natación. Debuta en el Seleccionado Argentino, en el Sudamericano de Guayaquil (Ecuador)." },
+    { "year": "1965", "label": "Campeón del Sudamericano de Clubes con Gimnasia y Esgrima." },
+    { "year": "1966", "label": "Medalla de bronce con el Seleccionado Argentino en el Sudamericano de Lima (Perú)." },
+    { "year": "1970", "label": "Cambia la natación por el waterpolo: campeón rosarino con Gimnasia y Esgrima." },
+    { "year": "1972", "img": "img/t2.svg", "alt": "Con el gorro del Seleccionado Argentino", "label": "Subcampeón del Sudamericano de Arica (Chile) con el Seleccionado Argentino." },
+    { "year": "1974", "label": "Subcampeón del Sudamericano de Medellín (Colombia) con el Seleccionado Argentino." },
+    { "year": "1976", "label": "Subcampeón del Sudamericano de Punta del Este (Uruguay) con el Seleccionado Argentino." },
+    { "year": "1977", "label": "Medalla de bronce en las eliminatorias del Mundial, en San Pablo (Brasil)." },
+    { "year": "1978", "label": "Subcampeón del Sudamericano de Guayaquil (Ecuador) con el Seleccionado Argentino." },
+    { "year": "1979", "label": "Campeón argentino absoluto de waterpolo." },
+    { "year": "1980", "label": "Medalla de bronce con el Seleccionado Argentino en el Sudamericano de Buenos Aires." },
+    { "year": "1980–1987", "label": "Ocho temporadas seguidas campeón rosarino y santafesino con Gimnasia y Esgrima, y subcampeón argentino." },
+    { "year": "1988", "img": "img/t3.svg", "alt": "Al borde de la pileta como entrenador", "label": "Primer título de campeón argentino como entrenador de Gimnasia y Esgrima." },
+    { "year": "1991", "label": "Séptimo puesto en los Juegos Panamericanos de La Habana (Cuba) como entrenador del Seleccionado Argentino." },
+    { "year": "1992", "label": "Cuarto puesto en el Sudamericano de Medellín (Colombia), categoría absoluta." },
+    { "year": "1994", "label": "Sexto título de campeón argentino con Gimnasia y Esgrima desde 1988." },
+    { "year": "1995", "img": "img/t4.svg", "alt": "Dirigiendo al Seleccionado Argentino", "label": "Entrenador del Seleccionado Argentino en los Juegos Panamericanos de Mar del Plata." },
+    { "year": "2015", "img": "img/t5.svg", "alt": "Con una selección juvenil argentina", "label": "Con los juveniles argentinos: subcampeón en los Sudamericanos Juvenil (Lima) y Junior (Barquisimeto, Venezuela)." },
+    { "year": "∞", "coda": true, "label": "Su legado sigue en cada categoría formativa del club y en el waterpolo de Rosario." }
   ]
 }

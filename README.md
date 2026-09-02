@@ -14,15 +14,20 @@ milestone) are lists in [`data.json`](data.json) — edit them there. Replace th
 placeholder images in [`img/`](img/) (`g*` gallery, `t*` trayectoria; keep the
 filenames or update `data.json`).
 
-The rest of the copy — hero, biography, proposal, footer — lives directly in
-[`index.html`](index.html). Text in `[brackets]` and spans with class `ph` mark
-facts still to be filled in — years, clubs, titles, the organizing group.
+The rest of the copy — hero, biography, proposal, footer — lives directly
+in [`index.html`](index.html). Text in `[brackets]` and spans with class `ph`
+mark facts still to be filled in — years, clubs, titles, the organizing group.
 
 Preview through a local server (`python3 -m http.server`); opening the file
 directly blocks the `data.json` fetch and leaves those three sections empty.
 
-The "Apoyar la propuesta" buttons are placeholders. A separate app will handle
-verified signatures.
+### The "La propuesta" section
+
+It is hidden until the pool-naming proposal has approval. To publish it, open
+[`data.json`](data.json) and set `flags.propuesta` to `true`, then push. That
+reveals the `#propuesta` section and its nav button; setting it back to `false`
+hides them again. The "Apoyar la propuesta" buttons are placeholders — a
+separate app will handle verified signatures.
 
 ## Local preview
 

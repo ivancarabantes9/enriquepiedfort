@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enriquepiedfort.waterpoloargentina.com/sitemap.xml
