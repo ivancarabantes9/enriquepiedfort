@@ -14,12 +14,12 @@
   ],
 
   "galeria": [
-    { "src": "img/g1.svg", "year": "[año]", "caption": "[Qué pasa en esta foto. Reemplazar por una imagen real.]" },
-    { "src": "img/g2.svg", "year": "[año]", "caption": "[Descripción de la foto.]" },
-    { "src": "img/g3.svg", "year": "[año]", "caption": "[Descripción de la foto.]" },
-    { "src": "img/g4.svg", "year": "[año]", "caption": "[Descripción de la foto.]" },
-    { "src": "img/g5.svg", "year": "[año]", "caption": "[Descripción de la foto.]" },
-    { "src": "img/g6.svg", "year": "[año]", "caption": "[Descripción de la foto.]" }
+    { "src": "img/g-equipo-gimnasia-esgrima.jpg", "year": "años 70", "caption": "El equipo de waterpolo del Club Gimnasia y Esgrima de Rosario en el viejo natatorio." },
+    { "src": "img/g-1972-sudamericano-arica.jpg", "year": "1972", "caption": "La delegación argentina en el XXI Campeonato Sudamericano de Arica, Chile, donde el equipo fue subcampeón." },
+    { "src": "img/g-1974-sudamericano-medellin.jpg", "year": "1974", "caption": "El seleccionado argentino de waterpolo en el XXII Sudamericano de Medellín, Colombia." },
+    { "src": "img/g-seleccion-santa-fe.jpg", "year": "años 70", "caption": "El seleccionado de Santa Fe, con una medalla, al borde de la pileta." },
+    { "src": "img/g-delegacion-argentina.jpg", "year": "años 70", "caption": "La delegación argentina de waterpolo, de traje, antes de un torneo internacional." },
+    { "src": "img/g-plantel-entrenamiento.jpg", "year": "años 70", "caption": "El plantel en ropa de entrenamiento." }
   ],
 
   "trayectoria": [
@@ -28,8 +28,8 @@
     { "year": "1965", "label": "Campeón del Sudamericano de Clubes con Gimnasia y Esgrima." },
     { "year": "1966", "label": "Medalla de bronce con el Seleccionado Argentino en el Sudamericano de Lima (Perú)." },
     { "year": "1970", "label": "Cambia la natación por el waterpolo: campeón rosarino con Gimnasia y Esgrima." },
-    { "year": "1972", "img": "img/t2.svg", "alt": "Con el gorro del Seleccionado Argentino", "label": "Subcampeón del Sudamericano de Arica (Chile) con el Seleccionado Argentino." },
-    { "year": "1974", "label": "Subcampeón del Sudamericano de Medellín (Colombia) con el Seleccionado Argentino." },
+    { "year": "1972", "img": "img/g-1972-sudamericano-arica.jpg", "alt": "La delegación argentina entra al Sudamericano de Arica, Chile, 1972", "label": "Subcampeón del Sudamericano de Arica (Chile) con el Seleccionado Argentino." },
+    { "year": "1974", "img": "img/g-1974-sudamericano-medellin.jpg", "alt": "El seleccionado argentino de waterpolo en el Sudamericano de Medellín, 1974", "label": "Subcampeón del Sudamericano de Medellín (Colombia) con el Seleccionado Argentino." },
     { "year": "1976", "label": "Subcampeón del Sudamericano de Punta del Este (Uruguay) con el Seleccionado Argentino." },
     { "year": "1977", "label": "Medalla de bronce en las eliminatorias del Mundial, en San Pablo (Brasil)." },
     { "year": "1978", "label": "Subcampeón del Sudamericano de Guayaquil (Ecuador) con el Seleccionado Argentino." },
