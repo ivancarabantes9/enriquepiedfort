@@ -1,16 +1,15 @@
 {
   "_ayuda": "Solo estas tres listas se editan acá (testimonios, galería y trayectoria). El resto del texto del sitio está en index.html. No borres las comas ni cambies los nombres de las claves. En 'trayectoria', 'img'/'alt' son opcionales y el último ítem lleva 'coda': true (el cierre con el ∞).",
 
-  "_flags_ayuda": "Interruptores del sitio. Poné true para mostrar. 'propuesta' habilita la sección 'La propuesta' y su botón en el menú; dejala en false hasta tener la aprobación.",
-  "flags": {
-    "propuesta": false
-  },
-
   "testimonios": [
-    { "quote": "[Testimonio de un jugador o jugadora que formó.]", "who": "[Nombre]", "role": "Jugó bajo su dirección en Gimnasia y Esgrima" },
-    { "quote": "[Testimonio de un colega entrenador.]", "who": "[Nombre]", "role": "Entrenador" },
-    { "quote": "[Testimonio de un dirigente del club o del Seleccionado.]", "who": "[Nombre]", "role": "Dirigente" },
-    { "quote": "[Unas palabras de la familia.]", "who": "[Nombre]", "role": "Familia" }
+    { "quote": "Todo lo que llegué a jugar afuera, en el circuito internacional, tiene la huella del Gato. Me formó de chico en las juveniles y me enseñó que se puede competir de igual a igual con cualquier selección del continente, sin complejos.", "who": "Gonzalo Echenique", "role": "Máximo exponente internacional del waterpolo argentino" },
+    { "quote": "Con el Gato fuimos compañeros de banco de suplentes y de vida entera. Dirigimos juntos, discutimos formaciones hasta la madrugada y nunca dejamos de ser amigos. Es de esas personas que uno elige tener cerca para siempre.", "who": "Pablo Quattrocchio", "role": "Entrenador, amigo y compañero de la vida" },
+    { "quote": "Llevar la cinta de capitán en Gimnasia y en el Seleccionado con el Gato dirigiendo era un privilegio y una responsabilidad enorme. Él te preparaba para responder por el equipo adentro y afuera del agua. Eso no se olvida más.", "who": "Bruno Testa", "role": "Ex capitán de Gimnasia y Esgrima y del Seleccionado Argentino" },
+    { "quote": "Fui su discípulo antes de ser su jugador, aunque en el fondo nunca dejé de ser las dos cosas. Todo lo que sé de este deporte pasa primero por lo que el Gato me enseñó al borde de la pileta.", "who": "Luciano Tirelli", "role": "Discípulo y jugador" },
+    { "quote": "Compartir plantel en el Seleccionado Argentino con el Gato como referencia era garantía de que ibas a dar un poco más de lo que creías tener. Nos hacía sentir que jugábamos por algo más grande que nosotros.", "who": "Juan Pablo Montané", "role": "Ex integrante del Seleccionado Argentino" },
+    { "quote": "Como capitana de la selección femenina siempre lo tuve de referencia, aunque le tocara formar generaciones de varones: el compromiso con el waterpolo argentino no tiene género, y el Gato fue de los primeros en hacérnoslo sentir así.", "who": "Carla Comba", "role": "Capitana del Seleccionado Argentino femenino" },
+    { "quote": "Jugué toda mi carrera de club en CAI, del otro lado de la pileta, pero cuando me tocó vestir la camiseta del Seleccionado Argentino Sub 20 entendí lo que se decía del Gato: no le importaba de qué club venías, te trataba como uno más.", "who": "Diego Battista", "role": "Jugador de CAI y del Seleccionado Argentino Sub 20" },
+    { "quote": "Con el Gato nos conocemos desde el Seleccionado de los años setenta, viajando juntos a Arica y a Medellín con la valija llena de ilusiones. Cincuenta años después seguimos hablando de waterpolo como si fuera ayer.", "who": "Diego Battista", "role": "Compañero en el Seleccionado Argentino" }
   ],
 
   "galeria": [
@@ -19,11 +18,16 @@
     { "src": "img/g-1974-sudamericano-medellin.jpg", "year": "1974", "caption": "El seleccionado argentino de waterpolo en el XXII Sudamericano de Medellín, Colombia." },
     { "src": "img/g-seleccion-santa-fe.jpg", "year": "años 70", "caption": "El seleccionado de Santa Fe, con una medalla, al borde de la pileta." },
     { "src": "img/g-delegacion-argentina.jpg", "year": "años 70", "caption": "La delegación argentina de waterpolo, de traje, antes de un torneo internacional." },
-    { "src": "img/g-plantel-entrenamiento.jpg", "year": "años 70", "caption": "El plantel en ropa de entrenamiento." }
+    { "src": "img/g-plantel-entrenamiento.jpg", "year": "años 70", "caption": "El plantel en ropa de entrenamiento." },
+    { "src": "img/g-plantel-gira-internacional.jpg", "year": "2005", "caption": "El plantel juvenil argentino en el Panamericano de Ciudad de México, México." },
+    { "src": "img/g-gato-borde-pileta.jpg", "year": "2010", "caption": "El Gato al borde de la pileta de Gimnasia y Esgrima." },
+    { "src": "img/g-reencuentro-generaciones.jpg", "year": "2020", "caption": "Un homenaje a Enrique Piedfort en el Club Gimnasia y Esgrima, rodeado de amigos de distintas generaciones." },
+    { "src": "img/g-gato-homenaje-ger-retrato.jpg", "year": "2020", "caption": "El Gato, emocionado y sin palabras, en su homenaje en el Club Gimnasia y Esgrima." },
+    { "src": "img/g-gato-medalla-santiago-2023.jpg", "year": "2023", "caption": "Medalla de bronce en los Juegos Panamericanos de Santiago 2023." }
   ],
 
   "trayectoria": [
-    { "year": "1960", "img": "img/t1.svg", "alt": "Enrique Piedfort de joven, nadador en Gimnasia y Esgrima", "label": "Debuta como nadador en el Club Gimnasia y Esgrima de Rosario, la institución a la que quedará ligado toda su vida." },
+    { "year": "1960", "label": "Debuta como nadador en el Club Gimnasia y Esgrima de Rosario, la institución a la que quedará ligado toda su vida." },
     { "year": "1964", "label": "Quíntuple campeón de la República y campeón absoluto de primera categoría en natación. Debuta en el Seleccionado Argentino, en el Sudamericano de Guayaquil (Ecuador)." },
     { "year": "1965", "label": "Campeón del Sudamericano de Clubes con Gimnasia y Esgrima." },
     { "year": "1966", "label": "Medalla de bronce con el Seleccionado Argentino en el Sudamericano de Lima (Perú)." },
@@ -36,12 +40,12 @@
     { "year": "1979", "label": "Campeón argentino absoluto de waterpolo." },
     { "year": "1980", "label": "Medalla de bronce con el Seleccionado Argentino en el Sudamericano de Buenos Aires." },
     { "year": "1980–1987", "label": "Ocho temporadas seguidas campeón rosarino y santafesino con Gimnasia y Esgrima, y subcampeón argentino." },
-    { "year": "1988", "img": "img/t3.svg", "alt": "Al borde de la pileta como entrenador", "label": "Primer título de campeón argentino como entrenador de Gimnasia y Esgrima." },
+    { "year": "1988", "label": "Primer título de campeón argentino como entrenador de Gimnasia y Esgrima." },
     { "year": "1991", "label": "Séptimo puesto en los Juegos Panamericanos de La Habana (Cuba) como entrenador del Seleccionado Argentino." },
     { "year": "1992", "label": "Cuarto puesto en el Sudamericano de Medellín (Colombia), categoría absoluta." },
     { "year": "1994", "label": "Sexto título de campeón argentino con Gimnasia y Esgrima desde 1988." },
-    { "year": "1995", "img": "img/t4.svg", "alt": "Dirigiendo al Seleccionado Argentino", "label": "Entrenador del Seleccionado Argentino en los Juegos Panamericanos de Mar del Plata." },
-    { "year": "2015", "img": "img/t5.svg", "alt": "Con una selección juvenil argentina", "label": "Con los juveniles argentinos: subcampeón en los Sudamericanos Juvenil (Lima) y Junior (Barquisimeto, Venezuela)." },
+    { "year": "1995", "label": "Entrenador del Seleccionado Argentino en los Juegos Panamericanos de Mar del Plata." },
+    { "year": "2015", "label": "Con los juveniles argentinos: subcampeón en los Sudamericanos Juvenil (Lima) y Junior (Barquisimeto, Venezuela)." },
     { "year": "∞", "coda": true, "label": "Su legado sigue en cada categoría formativa del club y en el waterpolo de Rosario." }
   ]
 }

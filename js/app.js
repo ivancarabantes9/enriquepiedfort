@@ -89,17 +89,6 @@ function renderTimeline(items) {
   });
 }
 
-// Interruptores del sitio (data.json → flags). Por defecto todo queda oculto
-// —los elementos llevan el atributo `hidden` en index.html— y se muestra sólo
-// si el flag correspondiente viene en true.
-function applyFlags(flags = {}) {
-  const propuestaOn = flags.propuesta === true;
-  ["propuesta", "navPropuesta"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.hidden = !propuestaOn;
-  });
-}
-
 function initLightbox() {
   const modalEl = document.getElementById("lightbox");
   const gallery = document.getElementById("gallery");
@@ -155,26 +144,14 @@ function initNav() {
   });
 }
 
-function initPlaceholders() {
+function initYear() {
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
-
-  // CTA de apoyo: todavía no hay backend de voto verificado.
-  const msg = "El sistema de apoyo verificado abre muy pronto. " +
-    "Mientras tanto, escribinos a [correo@ejemplo.com] para sumarte.";
-  ["supportCta", "letterCta"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      window.alert(msg);
-    });
-  });
 }
 
 function initShare() {
   const url = "https://enriquepiedfort.waterpoloargentina.com";
-  const text = "Homenaje a Enrique “Gato” Piedfort y la propuesta para que el nuevo natatorio de Rosario lleve su nombre.";
+  const text = "Homenaje a Enrique “Gato” Piedfort, referente del waterpolo de Rosario y el Seleccionado Argentino.";
 
   const wa = document.getElementById("shWhatsapp");
   if (wa) wa.href = "https://wa.me/?text=" + encodeURIComponent(text + " " + url);
@@ -215,7 +192,6 @@ function initShare() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await loadData();
-  applyFlags(data.flags);
   renderQuotes(data.testimonios);
   renderGallery(data.galeria);
   renderTimeline(data.trayectoria);
@@ -223,5 +199,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   initReveal();
   initNav();
   initShare();
-  initPlaceholders();
+  initYear();
 });

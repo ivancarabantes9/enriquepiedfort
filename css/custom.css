@@ -135,22 +135,6 @@ img { max-width: 100%; height: auto; display: block; }
   }
 }
 
-.btn-support {
-  --bs-btn-bg: var(--gold);
-  --bs-btn-border-color: var(--gold);
-  --bs-btn-color: var(--deep);
-  --bs-btn-hover-bg: var(--gold-d);
-  --bs-btn-hover-border-color: var(--gold-d);
-  --bs-btn-hover-color: var(--deep);
-  --bs-btn-active-bg: var(--gold-d);
-  --bs-btn-active-border-color: var(--gold-d);
-  --bs-btn-focus-shadow-rgb: 232, 176, 75;
-  font-family: var(--ff-util);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .09em;
-}
-
 /* --- hero -------------------------------------------------------------- */
 
 .hero {
@@ -279,13 +263,12 @@ img { max-width: 100%; height: auto; display: block; }
 .section-gallery { background: var(--paper); }
 .section-quotes { background: var(--deep); color: rgba(var(--light-rgb),.9); }
 .section-timeline { background: var(--deck); }
-.section-proposal { background: linear-gradient(180deg, var(--pool), var(--deep)); }
 .section-share { background: var(--deck); }
 
 /* --- historia ------------------------------------------------------- */
 
 .prose p { margin: 0 0 1.3rem; max-width: 62ch; }
-.prose .ph, .section-lead .ph, .proposal-body .ph, .foot-meta .ph,
+.prose .ph, .section-lead .ph, .foot-meta .ph,
 .portrait .ph, .pull .ph, .hero-thesis .ph {
   color: var(--gold-d);
   font-style: italic;
@@ -396,6 +379,8 @@ img { max-width: 100%; height: auto; display: block; }
 .shot:hover img, .shot:focus-visible img { transform: scale(1.05); filter: saturate(1.1); }
 .shot:hover::after, .shot:focus-visible::after { opacity: 1; }
 .shot:focus-visible { outline: 3px solid var(--pool); outline-offset: 2px; }
+/* touch/sin mouse: no hay :hover, así que el año se muestra siempre en vez de sólo al pasar el cursor */
+@media (hover: none) { .shot::after { opacity: 1; } }
 @media (max-width: 575.98px) { .gallery { columns: 2 140px; } }
 
 /* --- trayectoria: timeline vertical con fichas alternadas --------------- */
@@ -509,78 +494,6 @@ img { max-width: 100%; height: auto; display: block; }
   .t-item-coda { justify-content: center; padding-top: 1.2rem; }
   .t-item-coda .t-card { width: auto; text-align: center; }
   .t-item-coda::before { top: -4px; }
-}
-
-/* --- propuesta ----------------------------------------------- */
-
-.proposal-card {
-  max-width: 760px;
-  margin-inline: auto;
-  text-align: center;
-  color: #fff;
-}
-.proposal-card .eyebrow { text-align: center; }
-.proposal-heading {
-  font-family: var(--ff-head);
-  font-weight: 700;
-  line-height: 1.05;
-  font-size: clamp(1.9rem, 5vw, 3rem);
-  margin: 0 0 1.2rem;
-}
-.proposal-body {
-  color: rgba(var(--light-rgb),.88);
-  max-width: 52ch;
-  margin: 0 auto 2rem;
-}
-.proposal-name {
-  font-family: var(--ff-display);
-  text-transform: uppercase;
-  font-size: clamp(1.4rem, 4.4vw, 2.4rem);
-  line-height: 1.1;
-  color: var(--gold);
-  letter-spacing: .01em;
-  margin: 0 0 2.2rem;
-  text-wrap: balance;
-}
-.proposal-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-.proposal-actions .btn-outline-light {
-  --bs-btn-color: #fff;
-  --bs-btn-border-color: rgba(var(--light-rgb),.6);
-  --bs-btn-hover-bg: rgba(var(--light-rgb),.12);
-  --bs-btn-hover-border-color: #fff;
-  font-family: var(--ff-util); font-weight: 600;
-  text-transform: uppercase; letter-spacing: .09em;
-}
-.proposal-note {
-  font-family: var(--ff-util);
-  font-size: .9rem;
-  color: rgba(var(--light-rgb),.7);
-  max-width: 44ch;
-  margin: 1.4rem auto 0;
-}
-.proposal-goal {
-  margin-top: 2.6rem;
-  padding-top: 1.8rem;
-  border-top: 1px solid rgba(var(--light-rgb),.18);
-}
-.goal-num {
-  display: block;
-  font-family: var(--ff-head);
-  font-weight: 700;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  color: #fff;
-}
-.goal-label {
-  font-family: var(--ff-util);
-  text-transform: uppercase;
-  letter-spacing: .16em;
-  font-size: .76rem;
-  color: var(--shallow);
 }
 
 /* --- compartir ------------------------------------------- */
@@ -722,6 +635,6 @@ a:focus-visible, .btn:focus-visible, button:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: 2px;
 }
-.section-quotes a:focus-visible, .hero a:focus-visible, .section-proposal a:focus-visible {
+.section-quotes a:focus-visible, .hero a:focus-visible {
   outline-color: #fff;
 }
